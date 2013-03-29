@@ -5,7 +5,7 @@ GTEST_DIR = third_party/gtest-1.6.0
 all: stack
 
 clean:
-	rm -f *.o *.a
+	rm -f *.o *.a stack
 
 stack.o: main.cc
 	$(CXX) $(CXXFLAGS) -c $< -o $@
