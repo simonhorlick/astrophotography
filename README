@@ -1,0 +1,6 @@
+An astrophotography stacking program.
+
+On Ubuntu run:
+
+  sudo apt-get install libopencv-dev
+
