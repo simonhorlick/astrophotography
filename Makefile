@@ -22,7 +22,7 @@ triangle_similarity_matcher.o: triangle_similarity_matcher.cc triangle_similarit
 triangle_similarity_matcher_unittest.o: triangle_similarity_matcher_unittest.cc triangle_similarity_matcher.h matcher.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-triangle_similarity_matcher_unittest: triangle_similarity_matcher_unittest.o gtest_main.a
+triangle_similarity_matcher_unittest: triangle_similarity_matcher_unittest.o triangle_similarity_matcher.o gtest_main.a
 	$(CXX) -o $@ $(CXXFLAGS) $^ $(LIBS)
 
 #

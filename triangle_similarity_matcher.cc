@@ -27,7 +27,13 @@ Features TriangleSimilarityMatcher::FindFeatures( const cv::Mat& exposure ) {
 }
 
 cv::Mat TriangleSimilarityMatcher::Match( const Features& a, const Features& b ) {
-    return cv::Mat();
+    float data[] = {
+        1,0,0,0,
+        0,1,0,0,
+        0,0,1,0,
+        0,0,0,1,
+    };
+    return cv::Mat( 4,4, CV_32F, data );
 }
 
 void TriangleSimilarityMatcher::EncodeFeature( std::vector<float>& features,
