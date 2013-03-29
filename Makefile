@@ -1,5 +1,5 @@
-CXXFLAGS += -g -Wall -D__STDC_CONSTANT_MACROS
-
+CXXFLAGS += -g -Wall -D__STDC_CONSTANT_MACROS `pkg-config opencv --cflags`
+LIBS = `pkg-config opencv --libs`
 GTEST_DIR = third_party/gtest-1.6.0
 
 all: stack
@@ -7,11 +7,14 @@ all: stack
 clean:
 	rm -f *.o *.a stack
 
-stack.o: main.cc
+stack: stack.o triangle_similarity_matcher.o
+	$(CXX) -o $@ $(CXXFLAGS) $^ $(LIBS)
+
+stack.o: main.cc matcher.h triangle_similarity_matcher.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-stack: stack.o
-	$(CXX) $(CXXFLAGS) $^ -o $@
+triangle_similarity_matcher.o: triangle_similarity_matcher.cc triangle_similarity_matcher.h matcher.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 #
 # Google Test rules
