@@ -10,7 +10,7 @@ public:
     Features( const std::vector<float>& features ) : features_(features) {}
     ~Features() {}
 
-    const std::vector<float>& GetFeatures() {
+    const std::vector<float>& GetFeatures() const {
         return features_;
     }
 
